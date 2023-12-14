@@ -5,11 +5,11 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 export default function Search() {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
 
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
-    const pathname = usePathname();
-    const { replace } = useRouter();
 
     if (term) {
       params.set('query', term);
