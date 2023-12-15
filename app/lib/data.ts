@@ -53,8 +53,9 @@ export async function fetchLatestInvoices() {
 }
 
 export async function fetchCardData() {
+  noStore();
+
   try {
-    noStore();
 
     const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
     const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
@@ -175,8 +176,6 @@ export async function fetchInvoiceById(id: string) {
 }
 
 export async function fetchCustomers() {
-  noStore();
-
   try {
     const data = await sql<CustomerField>`
       SELECT
@@ -195,8 +194,6 @@ export async function fetchCustomers() {
 }
 
 export async function fetchFilteredCustomers(query: string) {
-  noStore();
-
   try {
     const data = await sql<CustomersTableType>`
 		SELECT
